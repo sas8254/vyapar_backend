@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const transportSchema = new mongoose.Schema({
-  transportName: {
+  name: {
     type: String,
     required: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true,
+    // unique: true,
   },
   address: {
     addressLine: {
@@ -23,7 +23,7 @@ const transportSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    pinCode: {
+    pincode: {
       type: Number,
       required: true,
     },
@@ -31,12 +31,12 @@ const transportSchema = new mongoose.Schema({
   GSTNo: {
     type: Number,
     required: true,
-    unique: true,
+    // unique: true,
   },
   contactNo: {
     type: Number,
     required: true,
-    unique: true,
+    // unique: true,
   },
 });
 

@@ -12,7 +12,7 @@ const customerSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
+    // unique: true,
   },
   transportId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -39,12 +39,12 @@ const customerSchema = new mongoose.Schema({
   GSTNo: {
     type: Number,
     required: true,
-    unique: true,
+    // unique: true,
   },
   contactNo: {
     type: Number,
     required: true,
-    unique: true,
+    // unique: true,
   },
 });
 
