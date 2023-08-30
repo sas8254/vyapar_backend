@@ -26,7 +26,7 @@ app.use("/api/colors", colorRoutes);
 app.use("/api/types", typeRoutes);
 app.use("/api/transport", transportRoutes);
 app.use("/api/products", productRoutes)
-app.use("api/orders", orderRoutes)
+app.use("/api/orders", orderRoutes)
 
 const PORT = process.env.PORT || 3100;
 app.listen(PORT, () => {

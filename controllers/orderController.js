@@ -1,7 +1,7 @@
 const Order = require("../models/order")
 
 exports.createOrder = async (req, res) => {
-    return res.send("hit")
+    return res.send(req.body)
     try {
         const [orderNo, dueDate, totalPrice, orderDate, customerId, products] = req.body;
 
