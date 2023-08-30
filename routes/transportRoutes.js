@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post("/", transportController.addTransport);
 
-router.get("/", transportController.getAllTransport);
+router.get("/", transportController.getAllTransports);
 
 router.get("/:Id", transportController.getTransport);
 

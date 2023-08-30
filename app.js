@@ -5,6 +5,8 @@ const dotenv = require("dotenv");
 const colorRoutes = require("./routes/colorRoutes");
 const typeRoutes = require("./routes/typeRoutes");
 const transportRoutes = require("./routes/transportRoutes");
+const productRoutes = require("./routes/productRoutes");
+const orderRoutes = require("./routes/orderRoutes")
 const bodyParser = require("body-parser");
 
 dotenv.config();
@@ -23,6 +25,8 @@ app.options("*", cors());
 app.use("/api/colors", colorRoutes);
 app.use("/api/types", typeRoutes);
 app.use("/api/transport", transportRoutes);
+app.use("/api/products", productRoutes)
+app.use("api/orders", orderRoutes)
 
 const PORT = process.env.PORT || 3100;
 app.listen(PORT, () => {

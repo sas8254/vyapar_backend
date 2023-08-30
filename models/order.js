@@ -6,7 +6,7 @@ const orderSchema = new mongoose.Schema({
     required: true,
   },
   dueDate: {
-    type: String,
+    type: Date,
     required: true,
   },
   totalPrice: {
@@ -15,7 +15,7 @@ const orderSchema = new mongoose.Schema({
   },
   orderDate: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
   customerId: {
     type: mongoose.Schema.Types.ObjectId,

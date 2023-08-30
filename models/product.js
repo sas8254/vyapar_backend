@@ -16,7 +16,7 @@ const productSchema = new mongoose.Schema({
     ref: "Type",
     required: true,
   },
-  availQuantity: {
+  quantity: {
     type: Number,
     required: true,
   },
@@ -30,4 +30,4 @@ const productSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Item", productSchema);
+module.exports = mongoose.model("Product", productSchema);

@@ -1,5 +1,5 @@
 const Transport = require("../models/transport");
-const Type = require("../models/type");
+
 
 exports.addTransport = async (req, res) => {
   try {
@@ -44,7 +44,7 @@ exports.getTransport = async (req, res) => {
   }
 };
 
-exports.getAllTransport = async (req, res) => {
+exports.getAllTransports = async (req, res) => {
   try {
     const transport = await Transport.find({});
     res.status(200).json({
