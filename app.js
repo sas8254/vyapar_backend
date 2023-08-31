@@ -9,6 +9,7 @@ const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes")
 const customerRoutes = require("./routes/customerRoutes");
 const bodyParser = require("body-parser");
+const path = require("path")
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ mongoose
   .catch((err) => console.error(err));
 
 const app = express();
+app.use(express.static(path.join(__dirname,'files/productImages')))
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

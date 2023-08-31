@@ -2,7 +2,9 @@ const Product = require("../models/product");
 
 exports.addProduct = async (req, res) => {
   try {
-    const { name, colors, type, quantity, price, imageUrl } =
+    // return console.log(req.file)
+    // return res.send(req.body)
+    const { name, colors, type, quantity, price } =
       req.body;
     const newProduct = new Product({
       name,
@@ -10,7 +12,7 @@ exports.addProduct = async (req, res) => {
       type,
       quantity,
       price,
-      imageUrl
+      imageUrl: req.file.filename
     });
     const product = await newProduct.save();
     res.status(201).json({
@@ -62,11 +64,11 @@ exports.editProduct = async (req, res) => {
       req.params.Id,
       {
         name,
-      colors,
-      type,
-      quantity,
-      price,
-      imageUrl
+        colors,
+        type,
+        quantity,
+        price,
+        imageUrl
       },
       { new: true }
     );
