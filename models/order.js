@@ -3,30 +3,38 @@ const mongoose = require("mongoose");
 const orderSchema = new mongoose.Schema({
   orderNo: {
     type: Number,
-    required: true,
+    // required: true,
   },
   dueDate: {
     type: Date,
-    required: true,
+    // required: true,
   },
   totalPrice: {
     type: Number,
-    required: true,
+    // required: true,
   },
   orderDate: {
     type: Date,
-    default: Date.now,
+    default: Date.now(),
+    required: true,
   },
-  customerId: {
+  customer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Customer",
-    required: true,
+    // required: true,
   },
   products: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-      required: true,
+      product: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+        // required: true,
+      },
+      quantity: {
+        type: Number,
+        required: true,
+        default: 1,
+      },
     },
   ],
 });

@@ -15,7 +15,7 @@ exports.addTransport = async (req, res) => {
         pincode: parseInt(pincode),
       },
       GSTNo: parseInt(GSTNo),
-      contactNo: parseFloat(contactNo),
+      contactNo: parseInt(contactNo),
     });
     const transport = await newTransport.save();
     res.status(201).json({
@@ -33,6 +33,9 @@ exports.addTransport = async (req, res) => {
 exports.getTransport = async (req, res) => {
   try {
     const transport = await Transport.findById(req.params.Id);
+    if (transport === null) {
+      return res.json("No transport found!");
+    }
     res.status(200).json({
       transport,
     });
@@ -75,7 +78,7 @@ exports.editTransport = async (req, res) => {
           pincode: parseInt(pincode),
         },
         GSTNo: parseInt(GSTNo),
-        contactNo: parseFloat(contactNo),
+        contactNo: parseInt(contactNo),
       },
       { new: true }
     );

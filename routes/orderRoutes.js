@@ -5,9 +5,15 @@ const router = express.Router()
 
 router.post("/", orderController.createOrder)
 
-router.get("/", (req, res)=>{
-    res.send('gethit')
-})
+router.get("/", orderController.getAllOrders);
+
+router.get("/:Id", orderController.getOneOrder);
+
+router.patch("/:Id", orderController.editOrder);
+
+router.delete("/:Id", orderController.deleteOrder);
+
+
 
 
 
