@@ -2,17 +2,28 @@ const Order = require("../models/order");
 
 exports.createOrder = async (req, res) => {
   try {
-    const { orderNo, totalPrice, dueDate, orderDate, customer, products } =
-      req.body;
+    // return res.send(req.body);
+    const {
+      orderNo,
+      dueDate,
+      orderDate,
+      customer,
+      products,
+      grandTotal,
+      totalOrderQuantity,
+    } = req.body;
 
     const newOrder = await new Order({
       orderNo,
       dueDate,
-      totalPrice,
       orderDate,
       customer,
       products,
+      grandTotal,
+      totalOrderQuantity,
     });
+
+    // return res.send(newOrder);
 
     await newOrder.save();
 
@@ -53,8 +64,14 @@ exports.getAllOrders = async (req, res) => {
 exports.getOneOrder = async (req, res) => {
   try {
     const order = await Order.findById(req.params.Id)
-      .populate("customer")
-      .populate("products.product");
+      .populate("customer") // Populate the 'customer' field
+      .populate({
+        path: "products",
+        populate: {
+          path: "product", // Populate the 'product' field within the 'products' array
+        },
+      });
+
     if (!order) {
       return res.status(404).json({ error: "Order not found." });
     }
