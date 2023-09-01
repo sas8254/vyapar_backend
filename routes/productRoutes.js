@@ -20,7 +20,11 @@ router.get("/", productController.getAllProducts);
 
 router.get("/:Id", productController.getProduct);
 
-router.patch("/:Id", productController.editProduct);
+router.patch(
+  "/:Id",
+  upload.single("productImage"),
+  productController.editProduct
+);
 
 router.delete("/:Id", productController.deleteProduct);
 
