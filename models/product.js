@@ -24,6 +24,10 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  setRate: {
+    type: Number,
+    required: true
+  },
   imageUrl: {
     type: String,
     //required: true,

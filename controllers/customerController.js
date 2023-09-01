@@ -43,7 +43,7 @@ exports.addCustomer = async (req, res) => {
 
 exports.getCustomer = async (req, res) => {
   try {
-    const customer = await Customer.findById(req.params.Id);
+    const customer = await Customer.findById(req.params.Id).populate("transportId");
     if (customer === null) {
       return res.json("No customer found!");
     }
@@ -60,7 +60,7 @@ exports.getCustomer = async (req, res) => {
 
 exports.getAllCustomers = async (req, res) => {
   try {
-    const customer = await Customer.find({});
+    const customer = await Customer.find({}).populate("transportId");
     res.status(200).json({
       customer,
     });

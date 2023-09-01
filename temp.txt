@@ -1,5 +1,0 @@
-products[0][product]    64f02b892013f2143b95d5be
-products[0][quantity]   2
-products[1][product]    64f02bda2013f2143b95d5c4
-products[1][quantity]   7
-customer                64f025e06531c99f6e753007

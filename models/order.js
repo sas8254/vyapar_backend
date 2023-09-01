@@ -58,6 +58,9 @@ const orderSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  description: {
+    type: String,
+  }
 });
 
 module.exports = mongoose.model("Order", orderSchema);
