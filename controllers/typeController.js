@@ -62,6 +62,7 @@ exports.editType = async (req, res) => {
     });
   }
 };
+
 exports.deleteType = async (req, res) => {
   try {
     const removedType = await Type.findByIdAndRemove(req.params.Id);

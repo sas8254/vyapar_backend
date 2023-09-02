@@ -30,6 +30,7 @@ exports.getAllColors = async (req, res) => {
     });
   }
 };
+
 exports.getColor = async (req, res) => {
   try {
     const color = await Color.findById(req.params.Id);
@@ -43,6 +44,7 @@ exports.getColor = async (req, res) => {
     });
   }
 };
+
 exports.editColor = async (req, res) => {
   try {
     const color = await Color.findByIdAndUpdate(
@@ -62,6 +64,7 @@ exports.editColor = async (req, res) => {
     });
   }
 };
+
 exports.deleteColor = async (req, res) => {
   try {
     const removedColor = await Color.findByIdAndRemove(req.params.Id);
