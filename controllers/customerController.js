@@ -25,7 +25,7 @@ exports.addCustomer = async (req, res) => {
         state,
         pincode: parseInt(pincode),
       },
-      GSTNo: parseInt(GSTNo),
+      GSTNo: GSTNo,
       contactNo: parseInt(contactNo),
     });
     const customer = await newCustomer.save();
@@ -43,7 +43,9 @@ exports.addCustomer = async (req, res) => {
 
 exports.getCustomer = async (req, res) => {
   try {
-    const customer = await Customer.findById(req.params.Id).populate("transportId");
+    const customer = await Customer.findById(req.params.Id).populate(
+      "transportId"
+    );
     if (customer === null) {
       return res.json("No customer found!");
     }
@@ -100,7 +102,7 @@ exports.editCustomer = async (req, res) => {
           state,
           pincode: parseInt(pincode),
         },
-        GSTNo: parseInt(GSTNo),
+        GSTNo: GSTNo,
         contactNo: parseInt(contactNo),
       },
       { new: true }

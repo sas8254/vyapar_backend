@@ -14,7 +14,7 @@ exports.addTransport = async (req, res) => {
         state,
         pincode: parseInt(pincode),
       },
-      GSTNo: parseInt(GSTNo),
+      GSTNo: GSTNo,
       contactNo: parseInt(contactNo),
     });
     const transport = await newTransport.save();
@@ -77,7 +77,7 @@ exports.editTransport = async (req, res) => {
           state,
           pincode: parseInt(pincode),
         },
-        GSTNo: parseInt(GSTNo),
+        GSTNo: GSTNo,
         contactNo: parseInt(contactNo),
       },
       { new: true }

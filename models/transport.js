@@ -29,7 +29,7 @@ const transportSchema = new mongoose.Schema({
     },
   },
   GSTNo: {
-    type: Number,
+    type: String,
     required: true,
     // unique: true,
   },
