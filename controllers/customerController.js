@@ -1,30 +1,16 @@
 const Customer = require("../models/customer");
 
 exports.addCustomer = async (req, res) => {
+  // return res.send(req.body);
   try {
-    const {
-      name,
-      agencyName,
-      email,
-      transportId,
-      addressLine,
-      city,
-      state,
-      pincode,
-      GSTNo,
-      contactNo,
-    } = req.body;
+    const { name, agencyName, email, transportId, address, GSTNo, contactNo } =
+      req.body;
     const newCustomer = new Customer({
       name,
       email,
       agencyName,
       transportId,
-      address: {
-        addressLine,
-        city,
-        state,
-        pincode: parseInt(pincode),
-      },
+      address,
       GSTNo: GSTNo,
       contactNo: parseInt(contactNo),
     });
@@ -76,18 +62,8 @@ exports.getAllCustomers = async (req, res) => {
 
 exports.editCustomer = async (req, res) => {
   try {
-    const {
-      name,
-      agencyName,
-      email,
-      transportId,
-      addressLine,
-      city,
-      state,
-      pincode,
-      GSTNo,
-      contactNo,
-    } = req.body;
+    const { name, agencyName, email, transportId, address, GSTNo, contactNo } =
+      req.body;
 
     const customer = await Customer.findByIdAndUpdate(
       req.params.Id,
@@ -96,12 +72,7 @@ exports.editCustomer = async (req, res) => {
         email,
         agencyName,
         transportId,
-        address: {
-          addressLine,
-          city,
-          state,
-          pincode: parseInt(pincode),
-        },
+        address,
         GSTNo: GSTNo,
         contactNo: parseInt(contactNo),
       },

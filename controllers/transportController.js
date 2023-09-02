@@ -3,17 +3,11 @@ const Transport = require("../models/transport");
 
 exports.addTransport = async (req, res) => {
   try {
-    const { name, email, addressLine, city, state, pincode, GSTNo, contactNo } =
-      req.body;
+    const { name, email, address, GSTNo, contactNo } = req.body;
     const newTransport = new Transport({
       name,
       email,
-      address: {
-        addressLine,
-        city,
-        state,
-        pincode: parseInt(pincode),
-      },
+      address,
       GSTNo: GSTNo,
       contactNo: parseInt(contactNo),
     });
@@ -63,20 +57,14 @@ exports.getAllTransports = async (req, res) => {
 
 exports.editTransport = async (req, res) => {
   try {
-    const { name, email, addressLine, city, state, pincode, GSTNo, contactNo } =
-      req.body;
+    const { name, email, address, GSTNo, contactNo } = req.body;
 
     const transport = await Transport.findByIdAndUpdate(
       req.params.Id,
       {
         name,
         email,
-        address: {
-          addressLine,
-          city,
-          state,
-          pincode: parseInt(pincode),
-        },
+        address,
         GSTNo: GSTNo,
         contactNo: parseInt(contactNo),
       },
