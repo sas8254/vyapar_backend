@@ -1,7 +1,6 @@
 const Customer = require("../models/customer");
 
 exports.addCustomer = async (req, res) => {
-  // return res.send(req.body);
   try {
     const { name, agencyName, email, transportId, address, GSTNo, contactNo } =
       req.body;

@@ -39,68 +39,81 @@ exports.createOrder = async (req, res) => {
 };
 
 exports.getAllOrders = async (req, res) => {
-    try {
-        const orders = await Order.find({})
-            .populate("customer")
-            .populate({
-                path: "products.product",
-                model: "Product",
-                populate: {
-                    path: "colors",
-                    model: "Color",
-                },
-            })
-            .populate({
-                path: "products",
-                populate: {
-                    path: "variants.color",
-                    model: "Color",
-                },
-            })
+  try {
+    const orders = await Order.find({})
+      .populate({
+        path: "customer",
+        model: "Customer",
+        populate: {
+          path: "transportId",
+          model: "Transport",
+        },
+      })
+      .populate({
+        path: "products.product",
+        model: "Product",
+        populate: {
+          path: "colors",
+          model: "Color",
+        },
+      })
+      .populate({
+        path: "products",
+        populate: {
+          path: "variants.color",
+          model: "Color",
+        },
+      });
 
-        if (!orders) {
-            return res.status(404).json({ error: "Order not found." });
-        }
-        res.status(200).json(orders);
-    } catch (error) {
-        res.status(500).json({
-            message: "Failed to fetch orders.",
-            error,
-        });
+    if (!orders) {
+      return res.status(404).json({ error: "Order not found." });
     }
+    res.status(200).json(orders);
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to fetch orders.",
+      error,
+    });
+  }
 };
 
-
 exports.getOneOrder = async (req, res) => {
-    try {
-        const order = await Order.findById(req.params.Id)
-            .populate("customer")
-            .populate({
-                path: "products.product",
-                model: "Product",
-                populate: {
-                    path: "colors",
-                    model: "Color",
-                },
-            })
-            .populate({
-                path: "products",
-                populate: {
-                    path: "variants.color",
-                    model: "Color",
-                },
-            })
+  try {
+    const order = await Order.findById(req.params.Id)
+      .populate({
+        path: "customer",
+        model: "Customer",
+        populate: {
+          path: "transportId",
+          model: "Transport",
+        },
+      })
+      .populate({
+        path: "products.product",
+        model: "Product",
+        populate: {
+          path: "colors",
+          model: "Color",
+        },
+      })
+      .populate({
+        path: "products",
+        populate: {
+          path: "variants.color",
+          model: "Color",
+        },
+      });
 
-        if (!order) {
-            return res.status(404).json({ error: "Order not found." });
-        }
-        res.status(200).json(order);
-    } catch (error) {
-        res.status(500).json({
-            message: "An error occured",
-            error,
-        });
+    if (!order) {
+      return res.status(404).json({ error: "Order not found." });
     }
+    res.status(200).json(order);
+  } catch (error) {
+    res.status(500).json({
+      message: "An error occured",
+      error,
+    });
+  }
 };
 
 exports.editOrder = async (req, res) => {
